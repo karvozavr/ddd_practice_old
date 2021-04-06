@@ -19,6 +19,9 @@ class DeliveryOrder internal constructor(
     val orderItems: List<OrderItem>
 ) : AggregateRoot<DeliveryOrderId>(id, version) {
 
+    var delivered: Boolean = false
+        private set
+
     companion object {
         fun create(
             id: DeliveryOrderId,
@@ -38,6 +41,11 @@ class DeliveryOrder internal constructor(
                 return OrderWithNoItems.left()
             }
         }
+    }
+
+    fun deliver() {
+        delivered = true
+        addEvent(DeliveryOrderDeliveredDomainEvent(id))
     }
 }
 
