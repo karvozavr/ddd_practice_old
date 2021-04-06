@@ -1,4 +1,4 @@
-package com.stringconcat.ddd.delivery.domain
+package com.stringconcat.ddd.delivery.domain.order
 
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight

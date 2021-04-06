@@ -1,8 +1,5 @@
-package com.stringconcat.ddd.delivery.domain
+package com.stringconcat.ddd.delivery.domain.order
 
-import com.stringconcat.ddd.delivery.address
-import com.stringconcat.ddd.delivery.orderId
-import com.stringconcat.ddd.delivery.orderItem
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.matchers.collections.shouldContainExactly

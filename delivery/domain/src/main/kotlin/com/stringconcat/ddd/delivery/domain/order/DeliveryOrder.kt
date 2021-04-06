@@ -1,4 +1,4 @@
-package com.stringconcat.ddd.delivery.domain
+package com.stringconcat.ddd.delivery.domain.order
 
 import arrow.core.Either
 import arrow.core.left

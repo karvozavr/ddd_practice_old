@@ -1,4 +1,4 @@
-package com.stringconcat.ddd.delivery.domain
+package com.stringconcat.ddd.delivery.domain.order
 
 import com.stringconcat.ddd.common.types.base.Version
 import com.stringconcat.ddd.common.types.common.Address
