@@ -20,7 +20,7 @@ class DeliveryOrder internal constructor(
 ) : AggregateRoot<DeliveryOrderId>(id, version) {
 
     var delivered: Boolean = false
-        private set
+        internal set
 
     companion object {
         fun create(
