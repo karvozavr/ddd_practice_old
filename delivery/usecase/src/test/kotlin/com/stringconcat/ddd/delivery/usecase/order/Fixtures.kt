@@ -25,12 +25,14 @@ fun count(value: Int = Random.nextInt(20, 5000)): Count {
     return result.b
 }
 
-fun order(address: Address): DeliveryOrder {
+fun order(address: Address = address()): DeliveryOrder {
     return DeliveryOrder.create(
         id = orderId(),
         deliveryAddress = address,
         orderItems = listOf(orderItem(), orderItem())
-    ).orNull().shouldNotBeNull()
+    ).orNull().shouldNotBeNull().also {
+        it.popEvents()
+    }
 }
 
 fun meal(): Meal {

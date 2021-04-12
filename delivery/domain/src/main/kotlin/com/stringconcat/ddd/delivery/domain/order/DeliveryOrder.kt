@@ -43,9 +43,14 @@ class DeliveryOrder internal constructor(
         }
     }
 
-    fun deliver() {
-        delivered = true
-        addEvent(DeliveryOrderDeliveredDomainEvent(id))
+    fun deliver(): Either<OrderAlreadyDelivered, Unit> {
+        return if (!delivered) {
+            delivered = true
+            addEvent(DeliveryOrderDeliveredDomainEvent(id))
+            Unit.right()
+        } else {
+            OrderAlreadyDelivered.left()
+        }
     }
 }
 
@@ -55,3 +60,5 @@ data class OrderItem(
 ) : ValueObject
 
 object OrderWithNoItems : BusinessError
+
+object OrderAlreadyDelivered : BusinessError
