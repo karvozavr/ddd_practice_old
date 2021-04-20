@@ -6,8 +6,6 @@ import com.stringconcat.ddd.common.types.common.Address
 import com.stringconcat.ddd.common.types.common.Count
 import com.stringconcat.ddd.delivery.domain.order.DeliveryOrder
 import com.stringconcat.ddd.delivery.domain.order.DeliveryOrderId
-import com.stringconcat.ddd.delivery.domain.order.Meal
-import com.stringconcat.ddd.delivery.domain.order.OrderItem
 import io.kotest.matchers.nulls.shouldNotBeNull
 import kotlin.random.Random
 
@@ -28,24 +26,10 @@ fun count(value: Int = Random.nextInt(20, 5000)): Count {
 fun order(address: Address = address()): DeliveryOrder {
     return DeliveryOrder.create(
         id = orderId(),
-        deliveryAddress = address,
-        orderItems = listOf(orderItem(), orderItem())
-    ).orNull().shouldNotBeNull().also {
+        deliveryAddress = address
+    ).also {
         it.popEvents()
     }
-}
-
-fun meal(): Meal {
-    val result = Meal.from("Meal #${Random.nextInt()}")
-    check(result is Either.Right<Meal>)
-    return result.b
-}
-
-fun orderItem(): OrderItem {
-    return OrderItem(
-        meal = meal(),
-        count = count()
-    )
 }
 
 class TestDeliveryOrderPersister : DeliveryOrderPersister, HashMap<DeliveryOrderId, DeliveryOrder>() {

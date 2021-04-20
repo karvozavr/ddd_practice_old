@@ -24,20 +24,6 @@ fun count(value: Int = Random.nextInt(20, 5000)): Count {
 fun order(address: Address): DeliveryOrder {
     return DeliveryOrder.create(
         id = orderId(),
-        deliveryAddress = address,
-        orderItems = listOf(orderItem(), orderItem())
-    ).orNull().shouldNotBeNull()
-}
-
-fun meal(): Meal {
-    val result = Meal.from("Meal #${Random.nextInt()}")
-    check(result is Either.Right<Meal>)
-    return result.b
-}
-
-fun orderItem(): OrderItem {
-    return OrderItem(
-        meal = meal(),
-        count = count()
+        deliveryAddress = address
     )
 }
